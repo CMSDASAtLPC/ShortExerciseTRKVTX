@@ -2,12 +2,10 @@ import FWCore.ParameterSet.Config as cms
 
 process = cms.Process("TracksAndVertices")
 
-# get the data from the Double-Mu triggered sample, a randomly selected file from Run2012A (must be accessible on your system)
+# get the data from the Double-Mu triggered sample
 process.source = cms.Source("PoolSource",
-#    fileNames = cms.untracked.vstring("/store/data/Run2015D/DoubleMuon/AOD/PromptReco-v4/000/260/538/00000/324F14A3-4D83-E511-B0E1-02163E012A0C.root"))
-#	fileNames = cms.untracked.vstring("/store/data/Run2016B/DoubleMuon/AOD/PromptReco-v2/000/274/422/00000/02F18325-492D-E611-B768-02163E01415E.root")
-	fileNames = cms.untracked.vstring("/store/data/Run2016B/DoubleMuon/AOD/PromptReco-v2/000/274/422/00000/1241192A-D72C-E611-B77F-02163E01472E.root")
-)
+    fileNames = cms.untracked.vstring("root://eoscms.cern.ch//store/data/Run2017C/DoubleMuon/AOD/PromptReco-v1/000/299/370/00000/0E5CDA9A-C96D-E711-B810-02163E014736.root","/store/data/Run2017C/DoubleMuon/AOD/PromptReco-v1/000/299/370/00000/0EE732AA-C26D-E711-BE95-02163E011EE2.root"))
+process.skipEvents = cms.untracked.PSet(input = cms.untracked.int32(6000)) # skip to about halfway through file 1
 process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(10000))  # get the first 1e4 events
 
 # ignore any messages except ERROR level and higher
@@ -55,6 +53,6 @@ process.output = cms.OutputModule("PoolOutputModule",
                                            "keep *_hltTriggerSummaryAOD_*_*",
                                            "keep *_clusterSummaryProducer_*_*",
                                            ),
-    fileName = cms.untracked.string("tracks_and_vertices_beginofrun274422.root"))
+    fileName = cms.untracked.string("tracks_and_vertices_DoubleMuon2017C_299370.root"))
 
 process.endpath = cms.EndPath(process.output)
