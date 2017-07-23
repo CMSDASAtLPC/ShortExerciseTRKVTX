@@ -10,7 +10,7 @@ for event in events:
     numTight = 0
     numHighPurity = 0
     for track in tracks.product():
-	print dir(track)
+	#print dir(track)
         if track.quality(track.qualityByName("loose")): numLoose += 1
         if track.quality(track.qualityByName("tight")): numTight += 1
         if track.quality(track.qualityByName("highPurity")): numHighPurity += 1

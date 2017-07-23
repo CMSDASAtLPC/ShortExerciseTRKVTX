@@ -7,9 +7,11 @@ tracks = Handle("std::vector<reco::Track>")
 px_histogram = ROOT.TH1F("px", "px", 100, -1000, 1000)
 py_histogram = ROOT.TH1F("py", "py", 100, -1000, 1000)
 pz_histogram = ROOT.TH1F("pz", "pz", 100, -1000, 1000)
-mass_histogram = ROOT.TH1F("mass", "mass", 100, 0, 5)
+mass_histogram = ROOT.TH1F("mass", "mass", 200, 0, 12)
 
 i = 0
+print 'Printing only first events tracks, skipping events with only 1 track'
+print 'Track pt, p, px, py, pz'
 for event in events:
     event.getByLabel("generalTracks", tracks)
     numTotal = tracks.product().size()
@@ -20,7 +22,7 @@ for event in events:
     total_py = 0
     total_pz = 0
     for track in tracks.product():
-        print track.pt(), track.p(), track.px(), track.py(), track.pz()
+        if(i < 1): print track.pt(), track.p(), track.px(), track.py(), track.pz()
         total_px += track.px()
         total_py += track.py()
         total_pz += track.pz()
@@ -28,6 +30,7 @@ for event in events:
     py_histogram.Fill(total_py)
     pz_histogram.Fill(total_pz)
 
+    if len(tracks.product()) < 2: continue
     one = tracks.product()[0]
     two = tracks.product()[1]
     energy = sqrt(0.106**2 + one.p()**2) + sqrt(0.106**2 + two.p()**2)
@@ -38,7 +41,7 @@ for event in events:
     mass_histogram.Fill(mass)
 
     i = i + 1
-    if i > 100: break
+    #if i > 100: break
 
 cx = ROOT.TCanvas ( "cx" , "cx" , 800, 800 )
 cx.cd()

@@ -11,7 +11,7 @@ for event in events:
     for track in tracks.product():
 	histogram.Fill(track.normalizedChi2())
     i += 1
-    if i > 1000: break
+    #if i > 1000: break
 
 c = ROOT.TCanvas ( "c" , "c" , 800, 800 )
 c.cd()

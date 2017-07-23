@@ -20,8 +20,11 @@ for event in events:
 
 c = ROOT.TCanvas ( "c" , "c" , 800, 800 )
 c.cd()
-rho_z_histogram.Draw()
+rho_z_histogram.Draw("colz")
 c.Print("rho_z.png")
 c.cd()
+
+c2 = ROOT.TCanvas("c2","c2",800,800)
+c2.cd()
 deltaz_histogram.Draw()
-c.Print("deltaz.png")
+c2.Print("deltaz.png")

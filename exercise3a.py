@@ -58,5 +58,5 @@ process.output = cms.OutputModule("PoolOutputModule",
                                            "keep *_offlinePrimaryVertices_*_*",
                                            "keep *_offlinePrimaryVerticesWithBS_*_*",
     ),
-    fileName = cms.untracked.string("output_exercise3a.root"))
+    fileName = cms.untracked.string("output.root"))
 process.endpath = cms.EndPath(process.output)
