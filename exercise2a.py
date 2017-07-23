@@ -1,7 +1,7 @@
 from DataFormats.FWLite import Handle, Events
 import ROOT
 from math import sqrt
-events = Events("tracks_and_vertices_beginofrun274422.root")
+events = Events("root://cmseos.fnal.gov//store/user/jmanagan/TrackingHATS2017/tracks_and_vertices_DoubleMuon2017C_299370.root")
 tracks = Handle("std::vector<reco::Track>")
 
 px_histogram = ROOT.TH1F("px", "px", 100, -1000, 1000)

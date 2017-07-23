@@ -4,7 +4,7 @@ import FWCore.ParameterSet.Config as cms
 process = cms.Process("KSHORTS")
 
 # Use the tracks_and_vertices.root file as input.
-process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring("file://tracks_and_vertices_beginofrun274422.root"))
+process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring("root://cmseos.fnal.gov//store/user/jmanagan/TrackingHATS2017/tracks_and_vertices_DoubleMuon2017C_299370.root"))
 process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(-1))
 
 # Suppress messages that are less important than ERRORs.
@@ -58,5 +58,5 @@ process.output = cms.OutputModule("PoolOutputModule",
                                            "keep *_offlinePrimaryVertices_*_*",
                                            "keep *_offlinePrimaryVerticesWithBS_*_*",
     ),
-    fileName = cms.untracked.string("output.root"))
+    fileName = cms.untracked.string("output_exercise3a.root"))
 process.endpath = cms.EndPath(process.output)

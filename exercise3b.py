@@ -1,7 +1,7 @@
 from ROOT import *
 from math import sqrt
 from DataFormats.FWLite import Handle, Events
-events = Events("output.root")
+events = Events("output_exercise3a.root")
 secondaryVertices = Handle("std::vector<reco::VertexCompositeCandidate>")
 mass_histogram = TH1F("mass", "mass", 100, 0.4, 0.6)
 dxy_histogram = TH1F("dxy","dxy",100,0,50)

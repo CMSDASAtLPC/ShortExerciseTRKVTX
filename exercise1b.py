@@ -1,6 +1,6 @@
 from DataFormats.FWLite import Handle, Events
 import inspect
-events = Events("tracks_and_vertices_beginofrun274422.root")
+events = Events("root://cmseos.fnal.gov//store/user/jmanagan/TrackingHATS2017/tracks_and_vertices_DoubleMuon2017C_299370.root")
 tracks = Handle("std::vector<reco::Track>")
 i = 0
 for event in events:
