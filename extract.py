@@ -2,10 +2,10 @@ import FWCore.ParameterSet.Config as cms
 
 process = cms.Process("TracksAndVertices")
 
-# get the data from the Double-Mu triggered sample
+# get the data from the Double-Mu triggered sample, a randomly selected file from Run2012A (must be accessible on your system)
 process.source = cms.Source("PoolSource",
+    skipEvents=cms.untracked.uint32(6000),
     fileNames = cms.untracked.vstring("root://eoscms.cern.ch//store/data/Run2017C/DoubleMuon/AOD/PromptReco-v1/000/299/370/00000/0E5CDA9A-C96D-E711-B810-02163E014736.root","/store/data/Run2017C/DoubleMuon/AOD/PromptReco-v1/000/299/370/00000/0EE732AA-C26D-E711-BE95-02163E011EE2.root"))
-process.skipEvents = cms.untracked.PSet(input = cms.untracked.int32(6000)) # skip to about halfway through file 1
 process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(10000))  # get the first 1e4 events
 
 # ignore any messages except ERROR level and higher
