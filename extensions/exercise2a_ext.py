@@ -8,12 +8,14 @@ px_histogram = ROOT.TH1F("px", "px", 100, -1000, 1000)
 py_histogram = ROOT.TH1F("py", "py", 100, -1000, 1000)
 pz_histogram = ROOT.TH1F("pz", "pz", 100, -1000, 1000)
 mass_histogram = ROOT.TH1F("mass", "mass", 100, 0, 5)
+mass_histogram2 = ROOT.TH1F("mass2", "mass2", 100, 6, 11)
+
 
 i = 0
 print 'Printing only first events tracks, skipping events with only 1 track'
 print 'Track pt, p, px, py, pz'
 for event in events:
-    event.getByLabel("generalTracks", tracks)
+    event.getByLabel("globalMuons", tracks)
     numTotal = tracks.product().size()
     numLoose = 0
     numTight = 0
@@ -39,6 +41,7 @@ for event in events:
     pz = one.pz() + two.pz()
     mass = sqrt(energy**2 - px**2 - py**2 - pz**2)
     mass_histogram.Fill(mass)
+    mass_histogram2.Fill(mass)
 
     i = i + 1
     #if i > 100: break
@@ -59,3 +62,8 @@ c = ROOT.TCanvas ( "c" , "c" , 800, 800 )
 c.cd()
 mass_histogram.Draw()
 c.Print("mass.png")
+
+cc = ROOT.TCanvas ( "cc" , "cc" , 800, 800 )
+cc.cd()
+mass_histogram2.Draw()
+cc.Print("mass2.png")
