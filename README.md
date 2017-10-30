@@ -1,4 +1,4 @@
-# TrackingHATS
+# Tracking/Vertexing short exercise at LPC CMSDAS 2018
 
 These are the exercise python files.
 
