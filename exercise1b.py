@@ -11,7 +11,7 @@ for event in events:
     j = 0
     for track in tracks.product():
         #if j > 24: continue
-        print "    Track", j, track.charge()*track.pt(), track.dxy(), track.dz(), track.chi2(), track.ndof(), track.numberOfValidHits(), track.algoName()
+        print "    Track", j, track.charge()/track.pt(), track.dxy(), track.dz(), track.chi2(), track.ndof(), track.numberOfValidHits(), track.algoName()
         j += 1
     i += 1
     if i >= 5: break
